@@ -1,0 +1,189 @@
+#%RAML 1.0
+---
+title: Appointo
+baseUri: http://localhost:3000/v1
+version: v1
+
+types:
+  user:
+    type: object
+    properties: 
+      type:
+        required: true
+        type: string
+      userId:
+        required: true
+        type: string
+      name: string
+      phone: string
+      timeSlots: object[]
+      address: string
+  appointment:
+    type: object
+    properties: 
+      appointmentId: string
+      sellerId: string
+      consumerId: string
+      timeSlot: object
+      dateCreated: string
+
+resourceTypes:
+  collection:
+    description: Collection of <<resourcePathName>>
+    get:
+      description: Get a list of <<resourcePathName>>
+      responses:
+        200:
+          body:
+            application/json:
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "messsage": "<<resourcePathName>> not found",
+                  "success": false,
+                  "status": 404
+                }
+    post:
+      description: Add a new <<resourcePathName|!singularize>>
+      body:
+        type: <<resourcePathName|!singularize>>
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> Created successfully",
+                  "success": true,
+                  "status": 200
+                }
+  collection-item:
+    description: Entity representing a <<resourcePathName|!singularize>>
+    get:
+      description: |
+        Get the <<resourcePathName|!singularize>>
+        with <<resourcePathName|!singularize>>Id =
+        {<<resourcePathName|!singularize>>Id}
+      responses:
+        200:
+          body:
+            application/json:
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> not found",
+                  "success": false,
+                  "status": 404
+                }
+    put:
+      description: Update <<resourcePathName|!singularize>> with <<resourcePathName|!singularize>>Id  {<<resourcePathName|!singularize>>Id}
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> updated successfully",
+                  "success": true,
+                  "status": 200
+                }
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> not found",
+                  "success": false,
+                  "status": 404
+                }
+    delete:
+      description: Delete <<resourcePathName|!singularize>> with <<resourcePathName|!singularize>>Id  {<<resourcePathName|!singularize>>Id}
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> deleted successfully",
+                  "success": true,
+                  "status": 200
+                }
+        404:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "<<resourcePathName|!singularize>> not found",
+                  "success": false,
+                  "status": 404
+                }
+
+
+/users:
+  type: collection
+  get:
+    queryParameters:
+      location:
+        displayName: Location
+        type: object
+        description: Location based on selection
+        example: | 
+          { 
+            "coord": { 
+              "latitude": 18.571219199999998,
+              "longitude": 73.769284 
+            } 
+          }
+        required: false
+      category:
+        displayName: Category
+        type: string
+        description: Category of sellers
+        example: clinic
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include ./samples/users-all.sample
+  post:
+    body:
+      application/json:
+        example: !include ./samples/user-new.sample
+  /{userId}:
+    type: collection-item
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include ./samples/user-one.sample
+    put:
+    delete:
+    /appointments:
+      type: collection
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include ./samples/appointments-all.sample
+      post:
+        body:
+          application/json:
+            example: !include ./samples/appointment-new.sample
+      /{appointmentId}:
+        type: collection-item
+        get:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include ./samples/appointment-one.sample
+        put:
+        delete:

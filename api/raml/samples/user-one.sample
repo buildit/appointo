@@ -1,0 +1,21 @@
+{
+  "data": {
+    "userId": "550e8400-e29b-41d4-a716-446655440000",
+    "type": "seller",
+    "name": "Ramesh",
+    "phone": "+919812343879",
+    "address": "Bangalore",
+    "timeSlots": [
+      {
+        "fromTime": "10:00",
+        "toTime": "11:00"
+      },
+      {
+        "fromTime": "11:00",
+        "toTime": "12:00"
+      }
+    ]
+  },
+  "success": true,
+  "status": 200
+}

@@ -1,0 +1,9 @@
+{
+  "sellerId": "550e8400-e29b-41d4-a716-446655440000",
+  "consumerId": "550e8400-e29b-41d4-a716-446655440000",
+  "timeSlot": {
+    "fromTime": "10:00",
+    "toTime": "11:00"
+  },
+  "dateCreated": "10/03/2020"
+}
