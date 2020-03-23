@@ -1,4 +1,4 @@
-import createUser from '../utils/dbOps';
+import { createUser } from '../utils/dbOps';
 import createToken from '../utils/token';
 
 const postUser = {
@@ -11,7 +11,7 @@ const postUser = {
     const {
       username, password, email, isAdmin,
     } = request.payload;
-    const user = await createUser(username, password, email, isAdmin);
+    const user = await createUser(username, email, password, isAdmin);
     return {
       id_token: createToken(user),
     };
