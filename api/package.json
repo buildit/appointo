@@ -5,16 +5,23 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./src --ext .js",
-    "start": "npm run lint && nodemon ./src/index.js --exec babel-node",
+    "start": "npm run lint && nodemon ./src/server.js --exec babel-node",
     "build": "babel ./src -d dist",
-    "serve": "node dist/index.js"
+    "serve": "node dist/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.8.7",
-    "@hapi/hapi": "^19.1.1"
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "glob": "^7.1.6",
+    "hapi-auth-jwt2": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
