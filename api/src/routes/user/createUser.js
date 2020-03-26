@@ -1,5 +1,5 @@
-import { createUser } from '../utils/dbOps';
-import createToken from '../utils/token';
+import { createUser } from '../../utils/dbOps';
+import createToken from '../../utils/token';
 
 const postUser = {
   path: '/users/register',

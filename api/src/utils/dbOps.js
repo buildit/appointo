@@ -53,3 +53,42 @@ export const updateUser = (id, userToUpdate) => {
     });
   });
 };
+
+export const getAllUsers = () => {
+  console.log();
+  return new Promise((resolve, reject) => {
+    User.find().select('-password -__v').exec((err, users) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(users);
+      }
+    });
+  });
+};
+
+export const getOneUser = (id) => {
+  console.log();
+  return new Promise((resolve, reject) => {
+    User.findById(id).select('-password -__v').exec((err, user) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(user);
+      }
+    });
+  });
+};
+
+export const deleteUser = (id) => {
+  console.log();
+  return new Promise((resolve, reject) => {
+    User.findByIdAndDelete(id, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};

@@ -1,7 +1,7 @@
 import Boom from '@hapi/boom';
-import { updateUser } from '../utils/dbOps';
+import { updateUser } from '../../utils/dbOps';
 
-const postUser = {
+const putUser = {
   path: '/users/{id}',
   method: 'PUT',
   config: {
@@ -20,4 +20,4 @@ const postUser = {
   },
 };
 
-export default postUser;
+export default putUser;

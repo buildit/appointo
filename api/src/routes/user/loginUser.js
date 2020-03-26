@@ -1,8 +1,8 @@
 import Boom from '@hapi/boom';
-import { verifyUser } from '../utils/dbOps';
-import createToken from '../utils/token';
+import { verifyUser } from '../../utils/dbOps';
+import createToken from '../../utils/token';
 
-const postUser = {
+const loginUser = {
   path: '/users/login',
   method: 'POST',
   config: {
@@ -28,4 +28,4 @@ const postUser = {
   },
 };
 
-export default postUser;
+export default loginUser;

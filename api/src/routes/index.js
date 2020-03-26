@@ -1,10 +1,6 @@
-import createUser from './createUser';
-import loginUser from './loginUser';
-import updateUser from './updateUser';
+import userRoutes from './user';
 
 const configureRoutes = (server) => server.route([
-  createUser,
-  loginUser,
-  updateUser,
+  ...userRoutes,
 ]);
 export default configureRoutes;
