@@ -13,6 +13,12 @@ import {
   CardText
 } from "reactstrap";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import Appointment from "./Appointment";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class ListingPage extends Component {
   constructor(props) {
@@ -127,6 +133,10 @@ class ListingPage extends Component {
                   Address: {this.state.sellerData.address}
                   <br></br>
                   Phone: {this.state.sellerData.phone}
+                  <br></br>
+                  <br></br>
+                  Select Appointment Date and Time from below: <br></br>
+                  <Appointment></Appointment>
                 </CardText>
               </CardBody>
             </Card>

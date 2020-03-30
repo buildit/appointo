@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "moment": "^2.24.0",
     "react": "^16.13.0",
+    "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "reactstrap": "^8.4.1"
