@@ -1,0 +1,36 @@
+.image-box {
+  /*linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),*/
+  background: url(../assets/bg-01.jpg);
+  background-size: cover;
+
+  /* Here's the same styles we applied to our content-div earlier */
+  /* color: white; */
+  width: "100%";
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  /* max-width: 70%; */
+  align-self: center;
+  vertical-align: center;
+  width: 70%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.login-card {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  color: white;
+  display: "flex";
+  position: "absolute";
+  left: "50%";
+  top: "50%";
+  transform: "translate(-50%, -50%)";
+  max-width: 60%;
+  align-self: center;
+  padding: 100px;
+}

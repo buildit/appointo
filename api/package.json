@@ -21,7 +21,7 @@
     "glob": "^7.1.6",
     "hapi-auth-jwt2": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.5"
+    "mongoose": "^5.9.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
