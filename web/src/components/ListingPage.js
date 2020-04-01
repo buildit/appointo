@@ -114,7 +114,7 @@ class ListingPage extends Component {
     });
     return (
       <div className="App container">
-        <h1>Sellers</h1>
+        <h1 style={{ padding: "10px" }}>List of Sellers</h1>
 
         <Modal
           isOpen={this.state.viewModal}

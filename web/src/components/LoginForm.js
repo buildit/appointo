@@ -3,12 +3,22 @@ import "./LoginForm.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import ListingPage from "./ListingPage";
+import logo from "../assets/logo.png";
 
 export default class Login extends Component {
   render() {
     return (
       <form>
-        <h3 className="text-center">Sign In</h3>
+        <h3 className="text-center appname">Appointo</h3>
+        <br></br>
+        <br></br>
+        <img
+          src={logo}
+          alt="Logo"
+          height="30%"
+          width="30%"
+          className="center"
+        />
         <br></br>
 
         <div className="form-group">
