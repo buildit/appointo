@@ -1,5 +1,11 @@
 import React, { memo, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView
+} from 'react-native';
 import { API_URI } from 'react-native-dotenv';
 import { Snackbar } from 'react-native-paper';
 
@@ -28,6 +34,8 @@ const RegisterScreen = ({ navigation }: Props) => {
   const [errors, setErrors] = useState([]);
 
   const _onSignUpPressed = () => {
+    // TODO
+    navigation.navigate('AppointmentsScreen');
     const nameError = emptyValidator(name.value, 'Name');
     const mobileError = emptyValidator(mobile.value, 'Mobile');
     const emailError = emailValidator(email.value);
@@ -96,89 +104,90 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   return (
     <ScrollView>
-    <Background>
-      <Logo />
+      <Background>
+        <Logo />
 
-      <Header>Create Seller Account</Header>
+        <Header>Create Seller Account</Header>
 
-      <TextInput
-        label="Seller Name"
-        returnKeyType="next"
-        value={name.value}
-        onChangeText={text => setName({ value: text, error: '' })}
-        error={!!name.error}
-        errorText={name.error}
-      />
+        <TextInput
+          label="Seller Name"
+          returnKeyType="next"
+          value={name.value}
+          onChangeText={text => setName({ value: text, error: '' })}
+          error={!!name.error}
+          errorText={name.error}
+        />
 
-      <TextInput
-        label="Description"
-        returnKeyType="next"
-        multiline={true}
-        numberOfLines={4}
-      />
+        <TextInput
+          label="Description"
+          returnKeyType="next"
+          multiline={true}
+          numberOfLines={4}
+        />
 
-      <TextInput
-        label="Place"
-        returnKeyType="next"
-      />
+        <TextInput label="Place" returnKeyType="next" />
 
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={text => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
+        <TextInput
+          label="Email"
+          returnKeyType="next"
+          value={email.value}
+          onChangeText={text => setEmail({ value: text, error: '' })}
+          error={!!email.error}
+          errorText={email.error}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
 
-      <TextInput
-        label="Mobile"
-        returnKeyType="next"
-        value={mobile.value}
-        onChangeText={text => setMobile({ value: text, error: '' })}
-        error={!!mobile.error}
-        errorText={mobile.error}
-        autoCapitalize="none"
-      />
+        <TextInput
+          label="Mobile"
+          returnKeyType="next"
+          value={mobile.value}
+          onChangeText={text => setMobile({ value: text, error: '' })}
+          error={!!mobile.error}
+          errorText={mobile.error}
+          autoCapitalize="none"
+        />
 
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={text => setPassword({ value: text, error: '' })}
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-      />
+        <TextInput
+          label="Password"
+          returnKeyType="done"
+          value={password.value}
+          onChangeText={text => setPassword({ value: text, error: '' })}
+          error={!!password.error}
+          errorText={password.error}
+          secureTextEntry
+        />
 
-      <Button mode="contained" onPress={_onSignUpPressed} style={styles.button}>
-        Sign Up
-      </Button>
-
-      <View style={styles.row}>
-        <Text style={styles.label}>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <Text style={styles.link}>Login</Text>
-        </TouchableOpacity>
-      </View>
-
-      {errors.length > 0 ? (
-        <Snackbar
-          visible={errors.length > 0}
-          onDismiss={() => {
-            setErrors([]);
-          }}
+        <Button
+          mode="contained"
+          onPress={_onSignUpPressed}
+          style={styles.button}
         >
-          {errors[0].message ? errors[0].message : errors[0].msg}
-        </Snackbar>
-      ) : (
-        <Text />
-      )}
-    </Background>
+          Sign Up
+        </Button>
+
+        <View style={styles.row}>
+          <Text style={styles.label}>Already have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+            <Text style={styles.link}>Login</Text>
+          </TouchableOpacity>
+        </View>
+
+        {errors.length > 0 ? (
+          <Snackbar
+            visible={errors.length > 0}
+            onDismiss={() => {
+              setErrors([]);
+            }}
+          >
+            {errors[0].message ? errors[0].message : errors[0].msg}
+          </Snackbar>
+        ) : (
+          <Text />
+        )}
+      </Background>
     </ScrollView>
   );
 };
