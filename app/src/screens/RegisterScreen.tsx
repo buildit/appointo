@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import { API_URI } from 'react-native-dotenv';
 import { Snackbar } from 'react-native-paper';
 
@@ -11,7 +11,7 @@ import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
 import {
   emailValidator,
-  nameValidator,
+  emptyValidator,
   passwordValidator
 } from '../core/utils';
 import { Navigation } from '../types';
@@ -24,17 +24,20 @@ const RegisterScreen = ({ navigation }: Props) => {
   const [name, setName] = useState({ value: '', error: '' });
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
+  const [mobile, setMobile] = useState({ value: '', error: '' });
   const [errors, setErrors] = useState([]);
 
   const _onSignUpPressed = () => {
-    const nameError = nameValidator(name.value);
+    const nameError = emptyValidator(name.value, 'Name');
+    const mobileError = emptyValidator(mobile.value, 'Mobile');
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
 
-    if (emailError || passwordError || nameError) {
+    if (emailError || passwordError || nameError || mobileError) {
       setName({ ...name, error: nameError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
+      setMobile({ ...mobile, error: mobileError });
       return;
     }
 
@@ -92,18 +95,31 @@ const RegisterScreen = ({ navigation }: Props) => {
   });
 
   return (
+    <ScrollView>
     <Background>
       <Logo />
 
-      <Header>Create Account</Header>
+      <Header>Create Seller Account</Header>
 
       <TextInput
-        label="Name"
+        label="Seller Name"
         returnKeyType="next"
         value={name.value}
         onChangeText={text => setName({ value: text, error: '' })}
         error={!!name.error}
         errorText={name.error}
+      />
+
+      <TextInput
+        label="Description"
+        returnKeyType="next"
+        multiline={true}
+        numberOfLines={4}
+      />
+
+      <TextInput
+        label="Place"
+        returnKeyType="next"
       />
 
       <TextInput
@@ -117,6 +133,16 @@ const RegisterScreen = ({ navigation }: Props) => {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
+      />
+
+      <TextInput
+        label="Mobile"
+        returnKeyType="next"
+        value={mobile.value}
+        onChangeText={text => setMobile({ value: text, error: '' })}
+        error={!!mobile.error}
+        errorText={mobile.error}
+        autoCapitalize="none"
       />
 
       <TextInput
@@ -153,6 +179,7 @@ const RegisterScreen = ({ navigation }: Props) => {
         <Text />
       )}
     </Background>
+    </ScrollView>
   );
 };
 

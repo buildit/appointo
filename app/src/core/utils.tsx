@@ -19,9 +19,9 @@ export const passwordValidator = (password: string) => {
   return '';
 };
 
-export const nameValidator = (name: string) => {
-  if (!name || name.length <= 0) {
-    return 'Name cannot be empty.';
+export const emptyValidator = (input: string, name:string) => {
+  if (!input || input.length <= 0) {
+    return name+' cannot be empty.';
   }
 
   return '';
