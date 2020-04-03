@@ -27,7 +27,8 @@ function App() {
       </nav>
 
       <div>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/" component={LoginPage} />
+        <Route path="/welcome" component={Welcome} />
         <Route path="/sellers-list" component={ListingPage} />
       </div>
       <footer>
