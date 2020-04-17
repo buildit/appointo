@@ -46,7 +46,7 @@ class Appointment extends Component {
           </div>
           <br></br>
           <div className="form-group">
-            <button className="btn btn-success">Add Appointment</button>
+            <button className="btn btn-success middle">Add Appointment</button>
           </div>
         </form>
       </div>
