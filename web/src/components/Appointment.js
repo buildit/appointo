@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import Calendar from "react-calendar";
 
-import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Appointment.css";
+import "react-calendar/dist/Calendar.css";
 
 class Appointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date()
+      date: new Date(),
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
+  onChange = (date) => this.setState({ date });
 
   handleSubmit(e) {
     e.preventDefault();
@@ -32,21 +27,24 @@ class Appointment extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Select Date: </label>
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleChange}
-              name="startDate"
-              dateFormat="mm/dd/yyyy"
-            />
             <br></br>
-            <label>Time:</label>
-            <select>
+            <h5 className="head">Date</h5>
+            <Calendar
+              onChange={this.onChange}
+              value={this.state.date}
+              className="middle"
+            />
+            <input type="text" value={this.state.date} className="middle" />
+            <br></br>
+            <br></br>
+            <h5 className="head">Time</h5>
+            <select className="middle">
               <option>9:00</option>
               <option>10:00</option>
               <option>11:00</option>
             </select>
           </div>
+          <br></br>
           <div className="form-group">
             <button className="btn btn-success">Add Appointment</button>
           </div>
